@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>QuickSpark — Simple promotions for small businesses</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#18263d;--text:#f4f7fb;--muted:#a9b7ca;--accent:#f8b84e;--line:#2a3a54;--green:#8ee0b0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#243858 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:22px 16px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:38px}
+.brand{font-weight:900;letter-spacing:.4px;font-size:1.2rem}.brand span{color:var(--accent)}.tag{font-size:.78rem;color:var(--green);border:1px solid #37634f;padding:5px 9px;border-radius:99px}
+.hero{max-width:720px;margin:0 auto 28px;text-align:center}.eyebrow{color:var(--accent);font-size:.8rem;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}
+h1{font-size:clamp(2.1rem,7vw,3.8rem);line-height:1.05;margin:12px 0 14px}.hero p{color:var(--muted);font-size:1.08rem;margin:0 auto;max-width:620px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}.card{background:linear-gradient(160deg,var(--panel),#101a2b);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 18px 45px #0003}
+h2{font-size:1.25rem;margin:0 0 5px}.sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+label{display:block;font-weight:650;font-size:.9rem;margin:14px 0 6px}
+input,select,textarea{width:100%;border:1px solid #3a4b65;border-radius:11px;background:#0b1525;color:var(--text);padding:12px 13px;font:inherit;min-height:46px}
+textarea{min-height:88px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:9px}
+.package{border:1px solid var(--line);border-radius:12px;padding:11px 8px;background:#0c1728;cursor:pointer;text-align:center}
+.package input{width:auto;min-height:auto;accent-color:var(--accent)}.package strong{display:block;font-size:1.05rem}.package small{color:var(--muted);font-size:.75rem}
+button{border:0;border-radius:12px;background:var(--accent);color:#1b2432;font-weight:850;padding:14px 17px;font-size:1rem;cursor:pointer;width:100%;margin-top:18px}
+button.secondary{background:#243650;color:var(--text);border:1px solid #405675;margin-top:9px}
+.note{font-size:.78rem;color:var(--muted);margin-top:12px}
+.preview{background:#0a1526;border:1px dashed #526783;border-radius:15px;padding:17px;margin-top:15px;min-height:180px}
+.preview .label{font-size:.72rem;color:var(--accent);font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.preview h3{font-size:1.5rem;line-height:1.15;margin:8px 0}.preview p{color:#d0d9e6;margin:8px 0}.preview .cta{display:inline-block;background:var(--accent);color:#172235;font-weight:800;padding:7px 11px;border-radius:8px;margin-top:8px}
+.steps{display:grid;gap:12px;margin-top:16px}.step{display:flex;gap:11px;align-items:flex-start}.num{width:28px;height:28px;border-radius:50%;background:#2a3b55;color:var(--accent);display:grid;place-items:center;font-weight:900;flex:none}
+.step p{margin:1px 0;color:var(--muted);font-size:.9rem}.step b{color:var(--text)}
+.foot{color:var(--muted);text-align:center;font-size:.8rem;margin-top:28px}
+.status{display:none;margin-top:12px;padding:12px;border-radius:10px;background:#18372c;color:#c4f4d7;font-size:.9rem}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.top{margin-bottom:26px}.packages{grid-template-columns:1fr 1fr 1fr}.wrap{padding-top:16px}}
+@media(max-width:390px){.packages{grid-template-columns:1fr}.tag{font-size:.68rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><div class="brand">⚡ Quick<span>Spark</span></div><div class="tag">MVP PREVIEW · FREE TO TEST</div></header>
+  <section class="hero">
+    <div class="eyebrow">Make your next promotion easier</div>
+    <h1>Better promotions.<br>Less time staring at a blank page.</h1>
+    <p>Tell us about your business and offer. Get a ready-to-edit promotional concept for social media or a flyer.</p>
+  </section>
+  <main class="grid">
+    <section class="card">
+      <h2>Build a promotion</h2><p class="sub">Fill in a few details to create a sample and an order brief.</p>
+      <form id="promoForm">
+        <label for="business">Business name</label><input id="business" required placeholder="e.g. Maria's Lawn Care">
+        <label for="kind">What kind of business is it?</label>
+        <select id="kind"><option>Food or restaurant</option><option>Cleaning service</option><option>Home repair or handyman</option><option>Beauty or personal care</option><option>Lawn care or landscaping</option><option>Retail shop</option><option>Other local business</option></select>
+        <label for="offer">What are you promoting?</label><input id="offer" required placeholder="e.g. 20% off first-time customers">
+        <label for="audience">Who do you want to reach?</label><input id="audience" placeholder="e.g. homeowners in my area">
+        <label for="style">Preferred style</label>
+        <select id="style"><option>Bold and attention-grabbing</option><option>Friendly and welcoming</option><option>Clean and professional</option><option>Fun and energetic</option></select>
+        <label>Choose a package to request</label>
+        <div class="packages">
+          <label class="package"><input type="radio" name="pack" value="Starter — 1 design — $9" checked><strong>$9</strong><small>1 design</small></label>
+          <label class="package"><input type="radio" name="pack" value="Business — 3 designs — $19"><strong>$19</strong><small>3 designs</small></label>
+          <label class="package"><input type="radio" name="pack" value="Premium — 5 designs — $29"><strong>$29</strong><small>5 designs</small></label>
+        </div>
+        <label for="contact">Your email or preferred contact</label><input id="contact" required placeholder="Where should we contact you?">
+        <button type="submit">Generate my promotion</button>
+      </form>
+      <div id="status" class="status" role="status"></div>
+      <p class="note">Prototype only: this creates a sample and copies an order brief. No payment is collected and no order is sent to a server yet.</p>
+    </section>
+    <aside class="card">
+      <h2>Your sample promotion</h2><p class="sub">Your draft appears here after you submit the form.</p>
+      <div class="preview" id="preview"><div class="label">Your promotion preview</div><h3>Your next customer could be one post away.</h3><p>Enter your business details to generate a tailored promotional concept.</p><span class="cta">Get started today</span></div>
+      <canvas id="flyer" width="1080" height="1350" aria-label="Generated promotional flyer preview" style="width:100%;height:auto;display:block;margin-top:14px;border-radius:14px;background:#17263d"></canvas>
+      <button class="secondary" id="downloadFlyer" type="button">Download flyer image (PNG)</button>
+      <button class="secondary" id="copyBtn" type="button">Copy promotion text and order brief</button>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><p><b>Describe your offer.</b><br>Share what makes your business worth choosing.</p></div>
+        <div class="step"><span class="num">2</span><p><b>Review your draft.</b><br>Edit the wording before using it.</p></div>
+        <div class="step"><span class="num">3</span><p><b>Request the package.</b><br>We confirm the details and delivery before payment.</p></div>
+      </div>
+    </aside>
+  </main>
+  <footer class="foot">QuickSpark is an early-stage concept. Prices are test prices, not a promise of results. Always verify claims, dates, and offer terms before publishing.</footer>
+</div>
+<script>
+const form=document.getElementById('promoForm');
+const preview=document.getElementById('preview');
+const statusBox=document.getElementById('status');
+let currentText='Your next customer could be one post away.\\nEnter your business details to generate a tailored promotional concept.';
+function makeDraft(data){
+ const name=data.business.trim(), offer=data.offer.trim(), audience=data.audience.trim()||'our local community';
+ const openers=['A great local find is waiting for you!','Looking for dependable local service?','A little something special for our neighbors!','Here is a great reason to shop local!'];
+ const opener=openers[(name.length+offer.length)%openers.length];
+ return `${opener}\\n\\n${name} is offering ${offer}.\\n\\nMade for ${audience}. Get in touch today to learn more and claim the offer.\\n\\n${name} — local service, friendly people.`;
+}
+form.addEventListener('submit',e=>{
+ e.preventDefault();
+ const data={business:document.getElementById('business').value,kind:document.getElementById('kind').value,offer:document.getElementById('offer').value,audience:document.getElementById('audience').value,style:document.getElementById('style').value,contact:document.getElementById('contact').value,pack:document.querySelector('input[name="pack"]:checked').value};
+ currentText=makeDraft(data);
+ drawFlyer(data);
+ const safe=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const lines=currentText.split('\\n');
+ preview.innerHTML=`<div class="label">${safe(data.style)} · ${safe(data.kind)}</div><h3>${safe(lines[0])}</h3><p><b>${safe(data.business)}</b> is offering ${safe(data.offer)}.</p><p>Made for ${safe(data.audience||'our local community')}. Get in touch today to learn more and claim the offer.</p><span class="cta">Contact ${safe(data.business)}</span>`;
+ const brief=`QUICKSPARK REQUEST\\nBusiness: ${data.business}\\nBusiness type: ${data.kind}\\nPromotion: ${data.offer}\\nAudience: ${data.audience||'Not specified'}\\nStyle: ${data.style}\\nPackage: ${data.pack}\\nContact: ${data.contact}\\n\\nDRAFT PROMOTION\\n${currentText}`;
+ statusBox.style.display='block';
+ statusBox.textContent='Your sample is ready. Your request brief will be copied when you tap “Copy promotion text”. Contact the service provider to confirm availability and payment.';
+ document.getElementById('copyBtn').dataset.brief=brief;
+});
+
+function wrapCanvas(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+ const words=String(text).split(/\s+/);let line='',lines=[];
+ for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}
+ if(line)lines.push(line);
+ lines.slice(0,maxLines).forEach((ln,i)=>ctx.fillText(ln,x,y+i*lineHeight));
+}
+function drawFlyer(data){
+ const canvas=document.getElementById('flyer'),ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;
+ const palettes=[['#101827','#f8b84e','#ffffff'],['#132d2b','#8ee0b0','#ffffff'],['#252044','#ffbd8a','#ffffff'],['#17263d','#8ec5ff','#ffffff']];
+ const p=palettes[(data.business.length+data.offer.length)%palettes.length];
+ const grad=ctx.createLinearGradient(0,0,W,H);grad.addColorStop(0,p[0]);grad.addColorStop(1,'#0b1220');
+ ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+ ctx.globalAlpha=.12;ctx.fillStyle=p[1];ctx.beginPath();ctx.arc(930,170,330,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
+ ctx.fillStyle=p[1];ctx.font='bold 34px system-ui';ctx.fillText('LOCAL BUSINESS SPOTLIGHT',78,105);
+ ctx.fillStyle=p[2];ctx.font='900 82px system-ui';wrapCanvas(ctx,data.business,78,270,900,96,3);
+ ctx.fillStyle=p[1];ctx.fillRect(78,620,150,12);
+ ctx.fillStyle=p[2];ctx.font='bold 62px system-ui';wrapCanvas(ctx,data.offer,78,755,900,78,4);
+ ctx.fillStyle='#d7e1ef';ctx.font='38px system-ui';wrapCanvas(ctx,'Made for '+(data.audience||'our local community'),78,1080,900,52,2);
+ ctx.fillStyle=p[0];ctx.fillRect(78,1180,924,100);
+ ctx.fillStyle=p[2];ctx.font='bold 38px system-ui';ctx.fillText('CONTACT US TODAY',112,1243);
+ ctx.fillStyle='#a9b7ca';ctx.font='26px system-ui';ctx.fillText('Edit and verify all offer details before publishing',78,1320);
+}
+drawFlyer({business:'Your Business',offer:'Your special offer',audience:'your local community'});
+document.getElementById('downloadFlyer').addEventListener('click',()=>{
+ const a=document.createElement('a');a.download='quickspark-promotion.png';a.href=document.getElementById('flyer').toDataURL('image/png');a.click();
+});
+document.getElementById('copyBtn').addEventListener('click',async()=>{
+ const textToCopy=document.getElementById('copyBtn').dataset.brief||currentText;
+ try{await navigator.clipboard.writeText(textToCopy);statusBox.style.display='block';statusBox.textContent='Copied. Paste the text into a message or email to send your request.'}
+ catch(e){statusBox.style.display='block';statusBox.textContent='Copy is unavailable in this browser. Select and copy the promotion text manually.'}
+});
+</script>
+</body>
+</html>
